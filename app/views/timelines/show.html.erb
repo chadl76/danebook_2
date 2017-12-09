@@ -1,1 +1,25 @@
 <h1><%=current_user.first_name%></h1>
+
+<%current_user.posts.each do |p| %>
+	<h2><%=p.title %></h2>
+	<p><%=p.body %></p>
+	<% end %>
+
+
+<%=form_for [:user, :timeline, @post], :url => user_timeline_path(@user) do |p| %>
+	  <p><%=p.label :title %></p>
+	  <p><%=p.text_field :title %></p>
+
+	  <p><%=p.label :body %></p>
+	  <p><%=p.text_field :body %></p>
+
+	  <p><%=p.submit %></p>
+	<% end %>
+
+ <%if current_user.posts.any? %>
+	<%current_user.posts.each do |p| %>
+
+	  <h2><%=p.title %></h2>
+	  <p><%=p.body %></p>
+	  <% end %>
+	<%end %>

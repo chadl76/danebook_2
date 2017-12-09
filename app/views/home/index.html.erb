@@ -1,10 +1,4 @@
 <% if user_signed_in? %>
 	<h1>Hello <%=current_user.email %></h1>
 <%end %>
-<%@user.each do |u| %>
-
-<%= u.email %>
-
-<% end %>
-
 <%= link_to "logout", destroy_user_session_path, :method => :delete %>

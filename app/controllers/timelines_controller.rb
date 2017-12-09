@@ -5,6 +5,8 @@ class TimelinesController < ApplicationController
 	
 	def show
 		@user = current_user
+		@post = @user.posts.build
+	
 	end
 
 	def create
@@ -17,6 +19,10 @@ class TimelinesController < ApplicationController
 
 	def set_user
 		@user  ||= User.find(params[:id])
+	end
+
+	def post_params
+		params.require(:post).permit(:user_id, :title, :body)
 	end
 
 	def user_params

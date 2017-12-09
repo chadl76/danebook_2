@@ -4,7 +4,11 @@ Rails.application.routes.draw do
  
 		devise_scope :users do
 		resources :users do 
-  		  resource :timeline  do 
+		  resource :profile
+  		  resource :timeline  do
+  		  	resources :posts do 
+  		  		resources :comments
+  		  	      end
   	            end
             end
       	
