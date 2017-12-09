@@ -1,9 +1,6 @@
 <h1><%=current_user.first_name%></h1>
 
-<%current_user.posts.each do |p| %>
-	<h2><%=p.title %></h2>
-	<p><%=p.body %></p>
-	<% end %>
+
 
 
 <%=form_for [:user, :timeline, @post], :url => user_timeline_path(@user) do |p| %>
@@ -23,3 +20,5 @@
 	  <p><%=p.body %></p>
 	  <% end %>
 	<%end %>
+
+	<%=current_user.posts.count %>

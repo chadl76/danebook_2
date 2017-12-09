@@ -11,6 +11,12 @@ class TimelinesController < ApplicationController
 
 	def create
 		@user = current_user
+		@post = Post.new(post_params)
+		@post.user_id = @user.id
+		@post.save!
+		if @post.save
+			redirect_to user_timeline_path(@user)
+		end
 	end
 
 
