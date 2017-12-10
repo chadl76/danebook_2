@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   ##	@user = current_user
   #end
 
-  #def after_sign_in_path_for(resource)
- #	redirect_to user_timeline_path(resource)
- # end
+  def after_sign_in_path_for(resource)
+ 	newsfeed_path(resource)
+  end
 end

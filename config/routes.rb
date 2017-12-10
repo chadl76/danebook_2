@@ -1,17 +1,15 @@
 Rails.application.routes.draw do
-	root :to => "timelines#show"
+	devise_scope :user do
+		root 'devise/registrations#new'
+	end
   devise_for :users
- 
-		devise_scope :users do
-		resources :users do 
-		  resource :profile
-  		  resource :timeline  do
-  		  	resources :posts do 
-  		  		resources :comments
-  		  	      end
-  	            end
-            end
+ 	
+
+ 	resources :users, only: [:index]
+ 	resources :posts
+
+ 	get 'newsfeed/:id', to:'users#newsfeed',  as: :newsfeed
       	
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-end
+
 end
