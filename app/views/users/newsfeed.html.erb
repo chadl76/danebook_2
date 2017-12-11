@@ -3,8 +3,6 @@
 
 <%=render template: 'posts/new'%>
 
-<% if current_user.posts.any? %>
-	<%current_user.posts.each do |post| %>
-		<ul><%=post.body %></ul>
-	<%end%>
-<%end %>
+
+<%= render @posts %>
+

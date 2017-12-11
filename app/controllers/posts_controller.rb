@@ -5,17 +5,20 @@ class PostsController < ApplicationController
 	def new
 		@user = current_user
 		@post = @user.posts.build
+		@comment = Comment.new(post_id: params[:post_id])
 	end
 
 	def show
 		@user = current_user
 		@post = Post.find(params[:post_id])
+		@comment = @post.comments.build(post_id: params[:post_id])
 	end
 
 	def create
-		@user = current_user
-		@post = @user.posts.create(post_params)
-		if @post.save!
+		@post = Post.new(post_parms) do |post|
+			post.user = current_user
+		end
+		if @post.save
 		redirect_to newsfeed_path(@user)
 		end		
 

@@ -1,0 +1,10 @@
+
+<%=post.body %>
+
+<%=simple_form_for(post.comments.build, :url => url_for(:action => 'show', :controller =>'posts'), remote: true) do |f| %>
+	<%=f.input :body %>
+	<%=f.hidden_field :post_id %>
+
+	<%=f.button :submit %>
+
+<%end %>
