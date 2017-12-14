@@ -5,6 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :posts
-  
+
   has_many :comments, foreign_key: :author_id, dependent: :destroy
+
+  def feed
+  	posts
+  end
+
 end

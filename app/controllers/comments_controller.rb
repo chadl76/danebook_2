@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
 	def new
 		@user = current_user
 		@post = Post.find(params[:post_id])
-		@comment = Comment.new
+		@comment = Comment.new(post_id: params[:post_id])
 	end
 
 
@@ -13,7 +13,11 @@ class CommentsController < ApplicationController
 	def create
 		@post = Post.find(params[:post_id])
 		@comment = @post.comments.create(comment_params)
+		@comment.author_id = current_user.id
+
+		if @comment.save!
 		render  'users/newsfeed'
+	end
 	end
 
 	private

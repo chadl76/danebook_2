@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
 	devise_scope :user do
-		root 'devise/registrations#new'
+		root 'users#index'
+		#root 'devise/registrations#new'
 	end
   devise_for :users
  	
 
  	resources :users, only: [:index]
- 	resources :posts do 
+ 	resources :posts, only: [:index, :show, :create, :destroy] do 
  		resources :comments, only: [:new, :create, :update, :destroy]
  	end
 

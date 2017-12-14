@@ -8,6 +8,11 @@ before_action :authenticate_user!
 	def newsfeed
 		@post_new = current_user.posts.build
 		@posts = current_user.posts
-		#@comment = Comment.new(comment_params)
+		@feed_items = current_user.feed
+		
 	end
+
+	private 
+
+
 end
