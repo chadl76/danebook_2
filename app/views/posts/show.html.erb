@@ -5,8 +5,15 @@
 <p><%=post.body %></p>
 
 <%unless post.body.nil? %>
-	
+
+	<%=form_for(current_user.likes.build) do |f| %>
+	<%= f.hidden_field :post_id, value: post.id %>
+	<%= f.submit "Like" %>
+	<%end %>
+
+
+
 	<%=link_to "Comments", new_post_comment_path(post_id: post.id) %>
-	
+
 
 <%end %>

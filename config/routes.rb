@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
+  get 'likes/new'
+
 	devise_scope :user do
-		root 'users#index'
-		#root 'devise/registrations#new'
+		#root 'users#index'
+		root 'devise/registrations#new'
 	end
   devise_for :users
  	
 
  	resources :users, only: [:index]
+ 	resources :likes
  	resources :posts, only: [:index, :show, :create, :destroy] do 
+ 		resources :likes
  		resources :comments, only: [:new, :create, :update, :destroy]
  	end
 

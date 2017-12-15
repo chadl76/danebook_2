@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   has_many :comments, foreign_key: :author_id, dependent: :destroy
 
+  has_many :likes
   def feed
   	posts
   end
