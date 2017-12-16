@@ -1,9 +1,17 @@
+<% current_user.requested_friends.each do |request| %>
+		<%=request.email %>
+		<%=link_to "Accept", friendships_update_path(id: request.id, method: "put") %>
+	<%end%>
+
 <h1>Users</h1>
 
 <%@users.each do |u| %>
 	<ul>
-		<li><%=u.email%> <button><%=link_to "follow" %></button></li>
+		<li><%=u.email%> <button><%=link_to "follow" %></button>
+
+		<%=link_to "Add friend", friendships_path(friend_id: u), method: :post %></li>
 
 	</ul>
+	
 	
 <%end%>

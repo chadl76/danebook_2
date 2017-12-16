@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'friendships/create'
+
+  get 'friendships/update'
+
+  get 'friendships/destroy'
+
   get 'likes/new'
 
 	devise_scope :user do
@@ -8,7 +14,10 @@ Rails.application.routes.draw do
   devise_for :users
  	
 
- 	resources :users, only: [:index]
+ 	resources :users, only: [:index] do 
+ 		resource :profile
+ 	end
+ 	resources :friendships, only: [:create, :update, :destroy]
  	resources :likes
  	resources :posts, only: [:index, :show, :create, :destroy] do 
  		resources :likes

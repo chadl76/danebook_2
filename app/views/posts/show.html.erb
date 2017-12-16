@@ -11,9 +11,9 @@
 	<%= f.submit "Like" %>
 	<%end %>
 
-	<% if post.likes.count > 0 %>
+	<% if post.likes.any? %>
 
-	<%=post.likes.count %>
+	<%=post.likes.count%><p>(likes)</p>
 
 	<%end %>
 
