@@ -22,5 +22,10 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
+  	@friendship = Friendship.find_by(id: params[:id])
+  	@friendship.destroy
+  	if @friendship.destroy
+	    redirect_to newsfeed_path(current_user)
+  	end
   end
 end
