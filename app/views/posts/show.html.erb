@@ -11,6 +11,12 @@
 	<%= f.submit "Like" %>
 	<%end %>
 
+	<% if post.likes.count > 0 %>
+
+	<%=post.likes.count %>
+
+	<%end %>
+
 
 
 	<%=link_to "Comments", new_post_comment_path(post_id: post.id) %>
