@@ -1,5 +1,7 @@
+<%=link_to "profile", new_user_profile_path(current_user) %> 
 <h2><%=current_user.email %></h2>
 
+<%=link_to "view profile", user_profile_path(current_user)%>
 
 <%=render template: 'posts/new'%>
 

@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_one :profile
   has_many :posts
 
   has_many :comments, foreign_key: :author_id, dependent: :destroy
@@ -20,6 +21,7 @@ class User < ApplicationRecord
   has_many :pending_friends, -> {where(friendships: { accepted: false})}, through: :friendships, source: :friend
   has_many :requested_friends, -> {where(friendships: { accepted: false})}, through: :received_friendships, source: :user
 
+  accepts_nested_attributes_for :profile, :allow_destroy => true
   def friends
   	active_friends | received_friends
   end

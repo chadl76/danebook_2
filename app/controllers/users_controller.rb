@@ -9,10 +9,10 @@ before_action :authenticate_user!
 		@post_new = current_user.posts.build
 		@posts = current_user.posts
 		@feed_items = current_user.feed
-		
+
 	end
 
-	private 
+	private
 
 
 end

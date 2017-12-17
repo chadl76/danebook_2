@@ -1,7 +1,10 @@
+
+<% if current_user.requested_friends.any? %>
 <% current_user.requested_friends.each do |request| %>
 		<%=request.email %>
 		<%=link_to "Accept", friendships_update_path(id: request.id, method: "put") %>
 		<%=link_to "Decline", friendships_destroy_path(id: request.id, method: :delete) %>
+	<%end%>
 	<%end%>
 
 <h1>Users</h1>
