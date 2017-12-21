@@ -6,6 +6,8 @@ class ProfilesController < ApplicationController
   end
 
   def edit
+       @user = current_user
+       @profile = Profile.new
   end
 
   def show
@@ -14,6 +16,7 @@ class ProfilesController < ApplicationController
   end
 
   def update
+
   end
 
   def create

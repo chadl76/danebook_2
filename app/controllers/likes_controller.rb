@@ -1,9 +1,7 @@
 class LikesController < ApplicationController
 	before_action :authenticate_user!
   
-  def new
-  	@user = current_user
-  end
+  
 
   def create
   	@user = current_user
@@ -12,6 +10,14 @@ class LikesController < ApplicationController
   	if @like.save!
   		redirect_to newsfeed_path(@user)
   	end
+  end
+
+  def update
+    @friendship = Friendship.find_by(id: params[:id])
+    @friendship.update(status: true)
+    if @friendship.save
+      redirect_to newsfeed_path(current_user)
+    end
   end
 
 

@@ -1,6 +1,9 @@
 class FriendshipsController < ApplicationController
 	before_action :authenticate_user!
 
+  def index 
+  end
+
   def create
   	@friendship = current_user.friendships.build(friend_id: params[:friend_id])
 
@@ -14,10 +17,11 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-  	@friendship = Friendship.find_by(id: params[:id])
-  	@friendship.update(accepted: true)
+  	@friendship = Friendship.find_by(params[:friend_id])
+  	@friendship.update(friend_id: params[:friend_id])
+    @friendship.update(accepted: true)
   	if @friendship.save
-  		redirect_to root_url
+  		redirect_to newsfeed_path(current_user)
   	end
   end
 
@@ -28,4 +32,12 @@ class FriendshipsController < ApplicationController
 	    redirect_to newsfeed_path(current_user)
   	end
   end
+
+  private
+
+   def friendship_params
+    params.require(:friendships).permit(
+                :friend_id,
+                :id)
+   end
 end
