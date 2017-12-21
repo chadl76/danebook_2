@@ -14,6 +14,7 @@ class PostsController < ApplicationController
 		@comment = Comment.new(:post => @post)
 		@comment.author_id = current_user.id
 		@comment.save
+		@comments = Comment.find_by(params[:post_id])
 		redirect_to newsfeed_path(current_user)
 	end
 

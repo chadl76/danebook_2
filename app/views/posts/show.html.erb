@@ -19,7 +19,16 @@
 
 
 
-	<%=link_to "Comments", new_post_comment_path(post_id: post.id) %>
 
+
+	<%=link_to "Comments", new_post_comment_path(post_id: post.id) %><br>
+<% if post.comments.any? %>
+	<%post.comments.each do |c| %>
+	<%= c.body %>
+	<%= c.author.email %>
+	<%= c.created_at %>
+
+	<%end %>
+<%end%>
 
 <%end %>
