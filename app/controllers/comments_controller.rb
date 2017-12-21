@@ -6,17 +6,20 @@ class CommentsController < ApplicationController
 		@user = current_user
 		@post = Post.find(params[:post_id])
 		@comment = Comment.new(post_id: params[:post_id])
+		#@comment.author_id = @user.id
 	end
 
 
 
 	def create
 		#@post = Post.find(params[:post_id])
-		@comment = current_user.posts.comments.create(comment_params)
-		@comment.author_id = current_user.id
-
+	
+		#@comment = current_user.posts.comments.create(comment_params)
+		@comment = Comment.new(comment_params)
+		#@comment.author_id = current_user.id
+		#@comment.author_id = current_user.id
 		if @comment.save!
-		render  'users/newsfeed'
+		redirect_to newsfeed_path(current_user)
 	end
 	end
 
