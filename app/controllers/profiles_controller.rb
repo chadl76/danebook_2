@@ -1,13 +1,14 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
   def new
-    @user = current_user
-    @profile = Profile.new
+    #@user = current_user
+    #@profile = Profile.new
+    @profile = curret_user.profile.build
   end
 
   def edit
        @user = current_user
-       @profile = Profile.new
+      @profile = Profile.find(params[:user_id])
   end
 
   def show
@@ -16,6 +17,12 @@ class ProfilesController < ApplicationController
   end
 
   def update
+    @profile = Profile.find_by(params[:user_id])
+    @profile.update(profile_params)
+    @profile.save
+    if @profile.save
+      redirect_to user_profile_path(current_user)
+    end
 
   end
 
