@@ -13,8 +13,9 @@
 <%end %>
 
 <% if @post.comments.any? %>
-	<%@post.comments.each do |c| %>
+	<%=@post.comments.each do |c| %>
 	<%=c.body %>
 	<%=c.author.inspect %>
+	<%=@post.comments.count%>
 	<%end %>
 	<%end %>

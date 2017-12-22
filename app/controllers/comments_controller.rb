@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
 	def new
 		@user = current_user
 		@comment = @post.comments.build
-		#@comment.author_id = @user.id
+		@comment.author_id = @user.id
 		
 		
 	end
@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
 		#@comment.post_id = @post.id
 		@post = Post.find(params[:post_id])
 		#@comment.author_id = current_user.id
-		#@comment.author_id = current_user.id
+		@comment.author_id = current_user.id
 		@comment.post_id = @post.id
 		
 		@comment.save
