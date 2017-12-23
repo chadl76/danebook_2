@@ -10,15 +10,15 @@
 <h1>Users</h1>
 
 <%@users.each do |u| %>
-
-	<ul>
-
-		<li><%=u.email%> <button><%=link_to "follow" %></button>
-
-		<%=link_to "Add friend", friendships_path(friend_id: u), method: :post %></li>
-
-	</ul>
-
+	<tr>
+	
+		<td><%=image_tag avatar_url(u) %></td>
+		<td><%=u.email%>
+			<% if u.id != current_user.id %>
+		<%=link_to "Add friend", friendships_path(friend_id: u), method: :post %></td>
+		<%end %><br>
+	
+	</tr>
 	
 	
 <%end%>

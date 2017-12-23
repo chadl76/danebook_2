@@ -3,17 +3,18 @@ class ProfilesController < ApplicationController
   def new
     #@user = current_user
     #@profile = Profile.new
-    @profile = curret_user.profile.build
+    @profile = Profile.new
+    
   end
 
   def edit
-       @user = current_user
-      @profile = Profile.find(params[:user_id])
+     @user = current_user
+     @profile = Profile.find(params[:user_id])
   end
 
   def show
     @user = current_user
-    @profile = Profile.find_by(params[:id])
+    @profile = Profile.find_by(params[:user_id])
   end
 
   def update
@@ -42,6 +43,7 @@ class ProfilesController < ApplicationController
 
   def profile_params
     params.require(:profile).permit(
+                :id,
                 :birthday,
                 :hometown,
                 :college,

@@ -5,4 +5,5 @@
 <%=@profile.hometown %><br>
 <%=@profile.college %><br>
 
+<%=link_to "edit profile", edit_user_profile_path(current_user) %>
 <%=link_to "back", newsfeed_path(current_user) %>
