@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+	skip_before_action :verify_authenticity_token
 	before_action :authenticate_user!
 	before_action :set_post
 
@@ -26,7 +27,8 @@ class CommentsController < ApplicationController
 		
 		@comment.save
 		if @comment.save!
-		redirect_to newsfeed_path(current_user)
+			redirect_to new_post_comment_path(@post)
+		#redirect_to newsfeed_path(current_user)
 	end
 	end
 
