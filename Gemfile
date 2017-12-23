@@ -49,6 +49,8 @@ gem 'jquery-rails'
 gem 'simple_form'
 
 gem 'autoprefixer-rails'
+
+gem 'omniauth-facebook'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
