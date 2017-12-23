@@ -51,6 +51,8 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 
 gem 'omniauth-facebook'
+
+gem 'envyable'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
