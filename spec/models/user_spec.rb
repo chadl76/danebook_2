@@ -1,19 +1,20 @@
 require 'rails_helper'
 
-FactoryBot. define do 
-	factory :user do |f|
-		f.first_name { Faker::Name.first_name }
-		f.email { Faker::Internet.email }
-		f.password { Faker::Internet.password }
-	end
-end
-RSpec.describe User, type: :model do 
-	pending "add user specs"
-	xit "is invalid without first_name" do 
 
-	end
+RSpec.describe User, type: :model do 
+	
+	
 
 	it "has valid factory" do 
 		expect(FactoryBot.create(:user)).to be_valid
+	end
+
+	it "is invalid without first_name" do 
+		expect(FactoryBot.build(:user, first_name: nil)).not_to be_valid
+	end
+
+	it "returns full name for user" do 
+		user = FactoryBot.build(:user, first_name: "Foo", last_name: "Bar")
+		expect(user.full_name).to eq("Foo Bar")
 	end
 end

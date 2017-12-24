@@ -6,6 +6,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 
+  validates :first_name, presence: true
+
   has_one :profile
   has_many :posts
 
@@ -39,6 +41,10 @@ class User < ApplicationRecord
 
   def build_profile
     Profile.create(user: self)
+  end
+
+  def full_name
+    self.first_name + ' ' + self.last_name
   end
 
   def self.new_with_session(params, session)

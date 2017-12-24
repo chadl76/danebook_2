@@ -4,7 +4,7 @@ RSpec.describe PostsController, type: :controller do
 
   describe "GET #user_id:" do
     it "returns http success" do
-      get :user_id:
+      get :user_id
       expect(response).to have_http_status(:success)
     end
   end
@@ -18,14 +18,14 @@ RSpec.describe PostsController, type: :controller do
 
   describe "GET #title:string" do
     it "returns http success" do
-      get :title:string
+      get :title
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET #body:string" do
     it "returns http success" do
-      get :body:string
+      get :body
       expect(response).to have_http_status(:success)
     end
   end
